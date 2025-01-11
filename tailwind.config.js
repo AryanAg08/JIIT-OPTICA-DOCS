@@ -5,7 +5,11 @@ module.exports = {
     "./docs/**/*.mdx",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'space-mono': ['"Space Mono"', 'serif'],
+      },
+    },
   },
   plugins: [],
 };

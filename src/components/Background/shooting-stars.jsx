@@ -5,16 +5,16 @@ import React, { useEffect, useState, useRef } from "react";
 // Function to generate random starting position and angle for the stars
 const getRandomStartPoint = () => {
     const side = Math.floor(Math.random() * 4);
-    const offset = Math.random() * window.innerWidth;
+    const offset = Math.random() * (side % 2 === 0 ? window.innerWidth : window.innerHeight);
 
     switch (side) {
-        case 0:
+        case 0: // Top side
             return { x: offset, y: 0, angle: 45 };
-        case 1:
+        case 1: // Right side
             return { x: window.innerWidth, y: offset, angle: 135 };
-        case 2:
+        case 2: // Bottom side
             return { x: offset, y: window.innerHeight, angle: 225 };
-        case 3:
+        case 3: // Left side
             return { x: 0, y: offset, angle: 315 };
         default:
             return { x: 0, y: 0, angle: 45 };
@@ -22,72 +22,37 @@ const getRandomStartPoint = () => {
 };
 
 export const ShootingStars = ({
-    minSpeed = 5, // Slower stars
-    maxSpeed = 15, // Moderate speed for stars
-    minDelay = 3000, // Minimum time delay before the next star appears
-    maxDelay = 6000, // Maximum time delay
+    speed = 8,
     starColor = "#9E00FF",
     trailColor = "#2EB9DF",
     starWidth = 20,
     starHeight = 2,
     className,
-    maxStars = 10, // Maximum stars on screen
-    minStars = 5, // Minimum stars on screen
+    maxStars = 5, // Maximum stars on screen at a time
 }) => {
     const [stars, setStars] = useState([]);
-    const svgRef = useRef(null);
 
     // Function to create a new star
     const createStar = () => {
         const { x, y, angle } = getRandomStartPoint();
-        const newStar = {
-            id: Date.now() + Math.random(), // Ensure unique ID for each star
-            x,
-            y,
-            angle,
-            scale: 1,
-            speed: Math.random() * (maxSpeed - minSpeed) + minSpeed, // Random speed within range
-            distance: 0,
-        };
+        const newStar = { id: Date.now() + Math.random(), x, y, angle, distance: 0, scale: 1 };
         setStars((prevStars) => {
-            if (prevStars.length >= maxStars) return prevStars; // Limit stars to maxStars
+            if (prevStars.length >= maxStars) return prevStars; // Limit stars on screen
             return [...prevStars, newStar];
         });
     };
 
     useEffect(() => {
-        // Initially create the minimum number of stars
-        for (let i = 0; i < minStars; i++) {
-            createStar();
-        }
-
-        // Add new stars at random intervals while keeping the total count within maxStars limit
-        const interval = setInterval(() => {
-            setStars((prevStars) => {
-                if (prevStars.length < maxStars) {
-                    createStar();
-                }
-                return prevStars; // Return the current state of stars without modification
-            });
-        }, Math.random() * (maxDelay - minDelay) + minDelay);
-
-        return () => clearInterval(interval); // Cleanup interval on component unmount
-    }, [minStars, maxStars, stars.length, minDelay, maxDelay]);
-
-    useEffect(() => {
-        // Function to move and remove stars
+        // Function to move stars
         const moveStars = () => {
             setStars((prevStars) => {
                 return prevStars
                     .map((star) => {
-                        // Move the star based on its speed and angle
                         const newX =
-                            star.x +
-                            star.speed * Math.cos((star.angle * Math.PI) / 180);
+                            star.x + speed * Math.cos((star.angle * Math.PI) / 180);
                         const newY =
-                            star.y +
-                            star.speed * Math.sin((star.angle * Math.PI) / 180);
-                        const newDistance = star.distance + star.speed;
+                            star.y + speed * Math.sin((star.angle * Math.PI) / 180);
+                        const newDistance = star.distance + speed;
                         const newScale = 1 + newDistance / 100;
 
                         // If the star moves off-screen, remove it
@@ -97,7 +62,7 @@ export const ShootingStars = ({
                             newY < -50 ||
                             newY > window.innerHeight + 50
                         ) {
-                            return null; // Remove the star once it’s off-screen
+                            return null; // Remove star
                         }
 
                         return {
@@ -108,17 +73,34 @@ export const ShootingStars = ({
                             scale: newScale,
                         };
                     })
-                    .filter(Boolean); // Remove null values (stars that moved off-screen)
+                    .filter(Boolean); // Filter out stars that are off-screen
             });
         };
 
-        // Continuously update the star positions
         const animationFrame = requestAnimationFrame(moveStars);
         return () => cancelAnimationFrame(animationFrame);
     }, [stars]);
 
+    useEffect(() => {
+        // Spawn stars in batches with random intervals
+        const spawnBatch = () => {
+            const batchCount = Math.floor(Math.random() * 3) + 3; // Randomly spawn 3-5 stars
+            for (let i = 0; i < batchCount; i++) {
+                setTimeout(() => {
+                    createStar();
+                }, i * 300); // Delay between stars in the batch
+            }
+        };
+
+        const interval = setInterval(() => {
+            spawnBatch();
+        }, 2000); // Batch every 2 seconds
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
-        <svg ref={svgRef} className={cn("w-full h-full absolute inset-0", className)}>
+        <svg className={cn("w-full h-full absolute inset-0", className)}>
             {stars.map((star) => (
                 <rect
                     key={star.id}
@@ -127,7 +109,8 @@ export const ShootingStars = ({
                     width={starWidth * star.scale}
                     height={starHeight}
                     fill="url(#gradient)"
-                    transform={`rotate(${star.angle}, ${star.x + (starWidth * star.scale) / 2}, ${star.y + starHeight / 2})`}
+                    transform={`rotate(${star.angle}, ${star.x + (starWidth * star.scale) / 2}, ${star.y + starHeight / 2
+                        })`}
                 />
             ))}
             <defs>

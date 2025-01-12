@@ -33,6 +33,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+/* index.css or global styles */
 body {
-  background-color: black;
+  @apply font-space-mono;
 }

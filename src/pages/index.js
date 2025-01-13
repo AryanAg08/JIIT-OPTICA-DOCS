@@ -42,21 +42,23 @@ export default function Home() {
                 <Navbar />
 
                 {/* Main Content */}
-                <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10 text-center px-6 py-4 font-space-mono">
-                    {/* Main Heading with Gradient and Text Shadow */}
-                    <h2 className="text-3xl md:text-5xl font-bold italic text-transparent bg-clip-text bg-gradient-to-b from-blue-600 to-pink-500 font-space-mono transition-transform duration-700 ease-in-out drop-shadow-xl hover:scale-105">
+                <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10 text-center px-6 py-4">
+                    {/* Main Heading with Custom Style */}
+                    <h2 className={styles.opticaDocsHeading}>
                         OPTICA-DOCS
                     </h2>
 
                     {/* Subheading with Important Words Colored */}
-                    <p className="text-base md:text-xl lg:text-2xl text-gray-100 mt-4 max-w-3xl leading-relaxed">
-                        Welcome to <span className="font-semibold text-blue-400">Optica's</span> official documentation hub. Explore past events, celebrate team contributions, and access resources on <span className="font-semibold text-purple-400">DSA</span> and <span className="font-semibold text-indigo-400">Web Development</span>.
-                    </p>
+                    <p className="text-2xl md:text-xl lg:text-2xl text-gray-400 mt-6 max-w-4xl leading-relaxed font-medium">
+    Welcome to <span className=" text-white">Optica's</span> official documentation hub. Explore past events, celebrate team contributions, and access resources on <span className=" text-white">DSA</span> and <span className=" text-white">Web Development</span>.
+</p>
+
+
                 </div>
 
                 {/* Scroll Down Section with Smooth Bounce */}
                 <div className="absolute bottom-4 w-full flex flex-col items-center">
-                    <div className="w-12 h-12 bg-blue-800 rounded-full animate-bounce mb-2"></div>
+                    <img src={ScrollDownGif} alt="Scroll Down" className="w-8 h-8 animate-bounce mb-2" />
                     <p className="text-gray-200 text-sm">Scroll Down</p>
                 </div>
             </div>

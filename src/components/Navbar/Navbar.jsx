@@ -29,7 +29,7 @@ function Navbar() {
                     {/* Left Section: Logo and Title */}
                     <div className="flex items-center space-x-3">
                         <img src={icon} alt="logo" className="h-10 w-10 object-contain" />
-                        <div className="text-xl font-bold tracking-wide bg-gradient-to-b from-blue-600 via-purple-400 to-pink-500 bg-clip-text text-transparent">
+                        <div className="text-xl font-bold tracking-wide text-gray-300 hover:text-white transition-colors">
                             JIIT OPTICA
                         </div>
                     </div>
@@ -64,7 +64,7 @@ function Navbar() {
                         {["Home", "Docs", "Showcase", "Community", "Tags"].map((item) => (
                             <div
                                 key={item}
-                                className="hover:text-gray-400 transition cursor-pointer bg-gradient-to-b from-blue-600 via-purple-400 to-pink-500 bg-clip-text text-transparent"
+                                className="cursor-pointer text-gray-300 hover:text-white transition-colors"
                             >
                                 {item}
                             </div>
@@ -92,7 +92,7 @@ function Navbar() {
                         {["Home", "Docs", "Showcase", "Community", "Tags"].map((item) => (
                             <div
                                 key={item}
-                                className="hover:text-gray-400 transition cursor-pointer bg-gradient-to-b from-blue-600 via-purple-400 to-pink-500 bg-clip-text text-transparent"
+                                className="cursor-pointer text-gray-300 hover:text-white transition-colors"
                             >
                                 {item}
                             </div>

@@ -189,6 +189,9 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
+      stylesheets: [
+        'src/css/custom.css',
+      ],
     }),
 };
 

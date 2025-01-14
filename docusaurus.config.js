@@ -23,7 +23,7 @@ const config = {
 
   presets: [
     [
-      '@docsaurus/preset-classic',
+      'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         debug: true,
@@ -38,8 +38,6 @@ const config = {
             extendDefaults: true,
           },
           editUrl: "https://github.com/jiitopticachapter",
-          remarkPlugins: [remarkMath],
-          rehypePlugins: [rehypeKatex],
         },
         blog: {
           showReadingTime: true,

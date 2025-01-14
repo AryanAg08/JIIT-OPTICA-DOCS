@@ -10,26 +10,26 @@
 @tailwind utilities;
 
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #ffffff; /* Neutral white */
+  --ifm-color-primary-dark: #d6d6d6; /* Light gray */
+  --ifm-color-primary-darker: #bfbfbf; /* Medium gray */
+  --ifm-color-primary-darkest: #a6a6a6; /* Darker gray */
+  --ifm-color-primary-light: #f2f2f2; /* Very light gray */
+  --ifm-color-primary-lighter: #fafafa; /* Slightly lighter gray */
+  --ifm-color-primary-lightest: #ffffff; /* Pure white */
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #e5e5e5; /* Light gray */
+  --ifm-color-primary-dark: #cccccc;
+  --ifm-color-primary-darker: #b3b3b3;
+  --ifm-color-primary-darkest: #999999;
+  --ifm-color-primary-light: #f2f2f2;
+  --ifm-color-primary-lighter: #fafafa;
+  --ifm-color-primary-lightest: #ffffff;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
@@ -38,11 +38,7 @@ body {
   @apply font-space-mono;
 }
 
-/* .navbar {
-  position: fixed;
-  top: 0;
-} */
-
+/* Footer */
 .footer {
   background-image: linear-gradient(#272329aa, #2d2c2d50, transparent), url("../../static/img/use-svg-as-background-image-particle-strokes.svg");
   color: #f2f2f2;
@@ -50,33 +46,32 @@ body {
 }
 
 .footer .container {
-  justify-content: space-around
+  justify-content: space-around;
 }
 
 .footer_info--container {
   width: 20vw;
-
 }
 
 .footer_info--container img {
   width: 40vw;
   height: auto;
   border-radius: 8px;
-  padding: 0.2rem;  
+  padding: 0.2rem;
 }
 
 @media screen and (max-width: 420px) {
   .footer_info--container {
     width: 100%;
-  }  
+  }
 }
 
-
+/* Announcement Bar */
 div[class^='announcementBar_'] {
-  background: #06e06fb4;
-  color: #fff;
-  border-bottom: 1.8px dotted rgb(37, 184, 11);
-  font-weight: bold;  
+  background: #06e06fb4; /* Background color */
+  color: #fff; /* Text color */
+  border-bottom: 1.8px solid rgb(37, 184, 11); /* Single solid bottom border */
+  font-weight: bold;
   font-size: 18px;
   width: 100%;
   height: auto;
@@ -141,4 +136,15 @@ div[class^='announcementBar_'] a:hover {
 div[class^='announcementBar_'] .clean-btn {
   color: #ffe11c;
   opacity: 100%;
+}
+/* Reset Link Styles */
+nav a {
+  text-decoration: none; /* Remove default browser underline */
+  border: none; /* Remove any border */
+}
+
+/* Hover Effect */
+nav a:hover {
+  text-decoration: none; /* Ensure underline doesn't appear */
+  border: none; /* No border on hover */
 }

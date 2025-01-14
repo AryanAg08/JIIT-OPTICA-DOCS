@@ -21,41 +21,13 @@
   align-items: center;
   justify-content: center;
 }
-
 .opticaDocsHeading {
-  color: #ffffff;
-  /* Pure white for text */
-  font-size: 5rem;
-  /* Large text */
-  font-weight: 700;
-  /* Extra bold */
-  text-align: center;
-  /* Centered alignment */
-  text-transform: uppercase;
-  /* All caps like the example */
-  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  /* Subtle shadow for depth */
-  letter-spacing: 1px;
-  /* Slightly tighter letter-spacing */
+  color: #ffffff; /* Pure white for text */
+  font-size: 5rem; /* Large text */
+  font-weight: 700; /* Extra bold */
+  text-align: center; /* Centered alignment */
+  text-transform: uppercase; /* All caps like the example */
+  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  letter-spacing: 1px; /* Slightly tighter letter-spacing */
 }
 
-@media screen and (max-width: 1200px) {
-  .opticaDocsHeading {
-    font-size: 4rem;
-    /* Slightly smaller on smaller screens */
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .opticaDocsHeading {
-    font-size: 3rem;
-    /* Even smaller on even smaller screens */
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .opticaDocsHeading {
-    font-size: 2rem;
-    /* Even smaller on even smaller screens */
-  }
-}

@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "../../../lib/utils";
+import { cn } from "../../lib/utils";
 import React, { useEffect, useState, useRef } from "react";
 
 // Function to generate random starting position and angle for the stars

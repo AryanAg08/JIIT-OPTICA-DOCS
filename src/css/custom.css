@@ -37,3 +37,108 @@
 body {
   @apply font-space-mono;
 }
+
+/* .navbar {
+  position: fixed;
+  top: 0;
+} */
+
+.footer {
+  background-image: linear-gradient(#272329aa, #2d2c2d50, transparent), url("../../static/img/use-svg-as-background-image-particle-strokes.svg");
+  color: #f2f2f2;
+  padding: 20px;
+}
+
+.footer .container {
+  justify-content: space-around
+}
+
+.footer_info--container {
+  width: 20vw;
+
+}
+
+.footer_info--container img {
+  width: 40vw;
+  height: auto;
+  border-radius: 8px;
+  padding: 0.2rem;  
+}
+
+@media screen and (max-width: 420px) {
+  .footer_info--container {
+    width: 100%;
+  }  
+}
+
+
+div[class^='announcementBar_'] {
+  background: #06e06fb4;
+  color: #fff;
+  border-bottom: 1.8px dotted rgb(37, 184, 11);
+  font-weight: bold;  
+  font-size: 18px;
+  width: 100%;
+  height: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+div[class^='announcementBar_'] a {
+  font-size: 1.2em;
+  padding: 1px 4px;
+  background: linear-gradient(
+    90deg,
+    rgb(252 176 69 / 100%) 0%,
+    rgb(253 29 29 / 100%) 50%,
+    rgb(131 58 180 / 100%) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 2px #ff00de, 0 0 1px #ff00de;
+}
+
+div[class^='announcementBar_'] a:hover {
+  font-size: 1.2em;
+  padding: 1px 4px;
+  background: linear-gradient(
+    90deg,
+    rgb(131 58 180 / 100%) 0%,    
+    rgb(253 29 29 / 100%) 50%,
+    rgb(252 176 69 / 100%) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme='dark'] div[class^='announcementBar_'] a {
+  font-size: 1.2em;
+  padding: 1px 4px;
+  background: linear-gradient(
+    90deg,
+    rgb(131 58 180 / 100%) 0%,    
+    rgb(253 29 29 / 100%) 50%,
+    rgb(252 176 69 / 100%) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme='dark'] div[class^='announcementBar_'] a:hover {
+  font-size: 1.2em;
+  padding: 1px 4px;
+  background: linear-gradient(
+    90deg,
+    rgb(252 176 69 / 100%) 0%,
+    rgb(253 29 29 / 100%) 50%,
+    rgb(131 58 180 / 100%) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+div[class^='announcementBar_'] .clean-btn {
+  color: #ffe11c;
+  opacity: 100%;
+}

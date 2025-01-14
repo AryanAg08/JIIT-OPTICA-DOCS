@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import icon from "../../../assets/icon.png";
+import Link from "@docusaurus/Link"; // Correct import
+import { useThemeConfig } from "@docusaurus/theme-common";
 
 function Navbar() {
+    const { navbar } = useThemeConfig();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     // Function to handle closing the menu
@@ -22,7 +25,15 @@ function Navbar() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    const navbarItems = [
+        { label: "Home", to: "/" },
+        { label: "Docs", to: "/docs/intro" },
+        { label: "Showcase", to: "/showcase" },
+        { label: "Community", to: "/community" },
+    ];
+
     return (
+        <span className={"navbar"}>
         <div className={`relative ${isMenuOpen ? "overflow-hidden" : ""}`}>
             <nav className="fixed top-0 left-0 w-full text-white shadow-md z-50">
                 <div className="flex items-center justify-between px-6 py-3">
@@ -50,24 +61,21 @@ function Navbar() {
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 strokeWidth={2}
-                                d={
-                                    isMenuOpen
-                                        ? null
-                                        : "M4 6h16M4 12h16M4 18h16" // Hamburger icon
-                                }
+                                d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
                             />
                         </svg>
                     </button>
 
                     {/* Center Section: Navigation Links (hidden on small screens) */}
                     <div className="hidden md:flex space-x-8 text-lg font-medium">
-                        {["Home", "Docs", "Showcase", "Community", "Tags"].map((item) => (
-                            <div
-                                key={item}
+                        {navbarItems.map((item) => (
+                            <Link
+                                key={item.label}
+                                to={item.to}
                                 className="cursor-pointer text-gray-300 hover:text-white transition-colors"
                             >
-                                {item}
-                            </div>
+                                {item.label}
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -89,13 +97,14 @@ function Navbar() {
 
                     {/* Menu Items */}
                     <div className="flex flex-col items-center space-y-6 py-4 text-lg font-medium text-white gap-2">
-                        {["Home", "Docs", "Showcase", "Community", "Tags"].map((item) => (
-                            <div
-                                key={item}
+                        {navbarItems.map((item) => (
+                            <Link
+                                key={item.label}
+                                to={item.to}
                                 className="cursor-pointer text-gray-300 hover:text-white transition-colors"
                             >
-                                {item}
-                            </div>
+                                {item.label}
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -108,6 +117,7 @@ function Navbar() {
                 onClick={closeMenu}
             ></div>
         </div>
+        </span>
     );
 }
 

@@ -1,45 +1,23 @@
 import React from 'react';
 import BackgroundAnimation from '../components/Background/BackgroundAnimation.jsx';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import Navbar from '../components/Navbar/Navbar.jsx';
 
-import Heading from '@theme/Heading';
+
 import styles from './index.module.css';
 import ScrollDownGif from '../../assets/scroll-down.gif';
 
-function HomepageHeader() {
-    const { siteConfig } = useDocusaurusContext();
-    return (
-        <header className={clsx('hero hero--primary', styles.heroBanner)}>
-            <div className="container">
-                <Heading as="h1" className="hero__title">
-                    {siteConfig.title}
-                </Heading>
-                <p className="hero__subtitle">{siteConfig.tagline}</p>
-                <div className={styles.buttons}>
-                    <Link
-                        className="button button--secondary button--lg"
-                        to="/docs/intro">
-                        Explore the Docs - 5min ⏱️
-                    </Link>
-                </div>
-            </div>
-        </header>
-    );
-}
+
 export default function Home() {
     const { siteConfig } = useDocusaurusContext();
     return (
-        <>
+        <Layout>
             <div className="relative w-full">
                 {/* Background Animation */}
                 <BackgroundAnimation />
 
                 {/* Navbar */}
-                <Navbar />
+                {/* <Navbar /> */}
 
                 {/* Main Content */}
                 <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10 text-center px-6 py-4">
@@ -62,6 +40,6 @@ export default function Home() {
                     <p className="text-gray-200 text-sm">Scroll Down</p>
                 </div>
             </div>
-        </>
+        </Layout>
     );
 }

@@ -11,7 +11,7 @@ const config = {
   baseUrl: '/',
 
   organizationName: 'JiitOptica',
-  projectName: 'optica docs', 
+  projectName: 'optica docs',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -61,13 +61,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      announcementBar: {
-        id: 'announcementBar',
-        content: '⭐️ If you like Optica docs, give it a star on <a target="_blank" href="https://github.com/jiitopticachapter">GitHub</a>.⭐️',
-        isCloseable: true,
-        backgroundColor: "var(--ifm-color-primary)",
-      },
-      
+      // announcementBar: {
+      //   id: 'announcementBar',
+      //   content: '⭐️ If you like Optica docs, give it a star on <a target="_blank" href="https://github.com/jiitopticachapter">GitHub</a>.⭐️',
+      //   isCloseable: true,
+      //   backgroundColor: "var(--ifm-color-primary)",
+      // },
+
       customCss: require.resolve('./src/css/custom.css'),
       navbar: {
         title: 'JIIT OPTICA',
@@ -189,6 +189,9 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
+      stylesheets: [
+        'src/css/custom.css',
+      ],
     }),
 };
 

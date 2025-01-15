@@ -3,7 +3,7 @@ import { cn } from "../../lib/utils";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
 export const StarsBackground = ({
-    starDensity = 0.00015,
+    starDensity = 0.00065,
     allStarsTwinkle = true,
     twinkleProbability = 0.7,
     minTwinkleSpeed = 0.5,

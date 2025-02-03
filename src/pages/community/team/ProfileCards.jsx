@@ -1,172 +1,140 @@
 import React from 'react';
+import { Tilt } from 'react-tilt';
 import { Instagram as InstagramIcon, Linkedin as LinkedinIcon } from 'lucide-react';
-import Shantanu from "../../../../assets/CoreTeam/Shantanu.png";
-import Sairaj from "../../../../assets/CoreTeam/Sairaj.png";
-import Tashif from "../../../../assets/CoreTeam/Tashif.png";
-import Vaibhav from "../../../../assets/CoreTeam/Vaibhav.jpeg";
-import Nandini from "../../../../assets/CoreTeam/Nandini.png";
-import Aryan from "../../../../assets/CoreTeam/Aryan.png";
-import Rajat from "../../../../assets/CoreTeam/Rajat.png";
-import Mayer from "../../../../assets/CoreTeam/Mayer.jpeg";
-import Yash from "../../../../assets/CoreTeam/Yash.png";
-import Navy from "../../../../assets/CoreTeam/Navy.png";
-import Raunak from "../../../../assets/CoreTeam/Raunak.jpeg";
-import Sumant from "../../../../assets/CoreTeam/Sumant.png";
+import { motion, AnimatePresence } from 'framer-motion';
+import { CoreTeamData } from './coreData';
 
-const CoreTeamData = [
-    {
-      imgsrc: Shantanu,
-      name: "Shantanu Pandey",
-      designation: "President",
-      instaLink: "https://www.instagram.com/shantanu_pandey_108?igsh=c3hxZmswODRsaGt6",
-      linkedinLink: "https://www.linkedin.com/in/shantanu-pandey-b0609925b",
-    },
-    {
-      imgsrc: Sairaj,
-      name: "Sai Raj Singh",
-      designation: "Vice President",
-      instaLink: "https://www.instagram.com/sairajsingh04?igsh=ZmUwdW40dms1cHk3",
-      linkedinLink: "https://www.linkedin.com/in/sai-raj-singh-67ba28248",
-    },
-    {
-      imgsrc: Tashif,
-      name: "Tashif Ahmad Khan",
-      designation: "Treasurer",
-      instaLink: "https://www.instagram.com/khan_tashif?utm_source=qr&igsh=MTVnOThleHFzb3M4aQ==",
-      linkedinLink: "https://www.linkedin.com/in/tashif-ahmad-khan-982304244",
-    },
-    {
-      imgsrc: Vaibhav,
-      name: "Vaibhav Vinayak",
-      designation: "Secretary",
-      instaLink: "https://www.instagram.com/vaibhavvinayak47?igsh=bmY2ZXcxZ2FzdTA0&utm_source=qr",
-      linkedinLink: "https://www.linkedin.com/in/vaibhav-vinayak-9690b3172",
-    },
-    {
-      imgsrc: Nandini,
-      name: "Nandini Jindal",
-      designation: "Strategic Chief",
-      linkedinLink: "https://www.linkedin.com/in/nandini-jindal-33a3a7282/",
-    },
-    {
-      imgsrc: Aryan,
-      name: "Aryan Goyal",
-      designation: "Technical Head",
-      instaLink: "https://www.instagram.com/ag_0080/",
-      linkedinLink: "https://www.linkedin.com/in/aryangoyal80/",
-    },
-    {
-      imgsrc: Rajat,
-      name: "Rajat Bhati",
-      designation: "Web Master",
-      instaLink: "https://www.instagram.com/rajat___.13?igsh=NWVpaWxxMzRpc2ht",
-      linkedinLink: "https://www.linkedin.com/in/rajat-bhati-6a2114216",
-    },
-    {
-      imgsrc: Mayer,
-      name: "Mayer Goyal",
-      designation: "Outreach Head",
-      instaLink: "https://www.instagram.com/mayer_goyallll/",
-      linkedinLink: "https://www.linkedin.com/in/mayer-goyal-07a58527a/",
-    },
-    {
-      imgsrc: Yash,
-      name: "Yash Mittal",
-      designation: "Management Head",
-      instaLink: "https://www.instagram.com/yashmittal_05?igsh=MXI2MGR4YWhwZnQ5Yw==",
-      linkedinLink: "https://www.linkedin.com/in/yash-mittal-433307251/",
-    },
-    {
-      imgsrc: Navy,
-      name: "Navy Gautam",
-      designation: "Management Head",
-      instaLink: "https://www.instagram.com/navy_gautam_/",
-      linkedinLink: "https://www.linkedin.com/in/navy-gautam-0247b1249/",
-    },
-    {
-      imgsrc: Raunak,
-      name: "Raunak Sharma",
-      designation: "Creative Head",
-      instaLink: "https://www.instagram.com/raunak._.sharma_?igsh=MXFidXd0ZDQxemEwOQ==",
-    },
-    {
-      imgsrc: Sumant,
-      name: "Sumant Kumar",
-      designation: "Creative Head",
-      instaLink: "https://www.instagram.com/sumantkumar_?igsh=MXFidXd0ZDQxemEwOQ==",
-    },
-  ];
+const ProfileCards = () => {
+  return (
+    <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-6 py-10">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"
+      >
+        {CoreTeamData.map((member, index) => (
+          <Tilt
+            key={index}
+            options={{
+              max: 15,
+              scale: 1.05,
+              speed: 300,
+              glare: true,
+              "max-glare": 0.5,
+            }}
+            className="h-full"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }} // Start hidden and slightly below
+              animate={{ opacity: 1, y: 0 }} // Animate to visible and original position
+              transition={{
+                duration: 0.6,
+                delay: index * 0.2, // Staggered delay based on index
+                type: "spring", // Spring animation for bounce effect
+                stiffness: 100,
+              }}
+              whileHover={{ scale: 1.02 }}
+              className="group relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-300 transform hover:-translate-y-2 h-full"
+            >
+              {/* Animated Background Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-  const InfoCard = () => {
-    return (
-      <div className="min-h-screen bg-black">
-        <header className="h-16 bg-[#111122] text-white text-2xl leading-16 text-center py-4">
-          Core Team Members
-        </header>
-        
-      
-        <div className="mx-auto max-w-7xl p-10">
-          {/* Flex container for cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {CoreTeamData.map((member, index) => (
-             <div
-             key={index}
-             className="group relative h-52 w-52 mx-auto rounded-full bg-gradient-to-br from-transparent via-transparent to-[#26baf0] transition-all ease-in-out duration-500 hover:w-[500px] hover:rounded-[100px_10px_100px_100px] overflow-hidden"
-           >
-             {/* Image Container */}
-             <div className="absolute top-2 left-2 h-52 w-52 flex-shrink-0">
-               <img
-                 src={member.imgsrc}
-                 alt={member.name}
-                 className="h-44 w-44 rounded-full border-[10px] border-white object-cover"
-               />
-             </div>
-           
-             {/* Content Container */}
-             <div className="absolute inset-1 flex flex-col items-center justify-center space-y-5 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-in-out">
-               {/* Name and Designation */}
-               <h2 className="font-['Fira_Sans_Condensed']  ml-4 text-xl font-semibold italic text-white">
-                 {member.name}
-               </h2>
-               <h4 className="font-['Fira_Sans_Condensed'] text-l font-light text-white space-y-reverse">
-                 {member.designation}
-               </h4>
-           
-               {/* Social Links */}
-               <div className="flex gap-4">
-                 {member.instaLink && (
-                   <a
-                     href={member.instaLink}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="w-8 h-8 flex items-center justify-center rounded-full bg-[#E1306C] text-white transition-transform transform hover:scale-110"
-                   >
-                     <InstagramIcon />
-                   </a>
-                 )}
-                 {member.linkedinLink && (
-                   <a
-                     href={member.linkedinLink}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="w-8 h-8 flex items-center justify-center rounded-full bg-[#0077B5] text-white transition-transform transform hover:scale-110"
-                   >
-                     <LinkedinIcon />
-                   </a>
-                 )}
-               </div>
-             </div>
-           </div>
-           
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  };
-  
-  export default InfoCard;
-  
+              {/* Image Container */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }} // Start hidden and slightly below
+                animate={{ opacity: 1, y: 0 }} // Animate to visible and original position
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.2 + 0.2, // Slightly longer delay than the parent container
+                  type: "spring",
+                  stiffness: 100,
+                }}
+                className="w-full h-56 overflow-hidden relative"
+              >
+                <img
+                  src={member.imgsrc}
+                  alt={member.name}
+                  className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-700"
+                />
+                {/* Shimmer Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+              </motion.div>
+              
+              {/* Text Content with Animated Background */}
+              <div className="p-3 relative z-10 bg-gradient-to-b from-white/0 to-white/95">
+                <motion.h3
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.2 + 0.4 }} // Delay for text animation
+                  className="text-lg font-semibold text-gray-900"
+                >
+                  {member.name}
+                </motion.h3>
+                <motion.p
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.2 + 0.5 }} // Delay for text animation
+                  className="text-xs text-gray-600 mt-1"
+                >
+                  {member.designation}
+                </motion.p>
+              </div>
 
+              {/* Social Icons */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4 backdrop-blur-[2px] z-20">
+                <div className="flex gap-3 items-center justify-center relative z-30">
+                  <AnimatePresence>
+                    {member.instaLink && (
+                      <motion.a
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        whileHover={{
+                          scale: 1.2,
+                          rotate: 5,
+                          boxShadow: "0 0 8px rgba(255,255,255,0.5)"
+                        }}
+                        whileTap={{ scale: 0.9 }}
+                        href={member.instaLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full bg-gradient-to-br from-purple-600 via-pink-600 to-orange-600 hover:from-purple-500 hover:via-pink-500 hover:to-orange-500 transition-all duration-200 hover:ring-2 hover:ring-white/50 relative z-50"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <InstagramIcon size={16} className="text-white" />
+                      </motion.a>
+                    )}
+                    {member.linkedinLink && (
+                      <motion.a
+                        initial={{ scale: 0, rotate: 180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        whileHover={{
+                          scale: 1.2,
+                          rotate: -5,
+                          boxShadow: "0 0 8px rgba(255,255,255,0.5)"
+                        }}
+                        whileTap={{ scale: 0.9 }}
+                        href={member.linkedinLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full bg-[#0A66C2] hover:bg-[#0a5cb2] transition-all duration-200 hover:ring-2 hover:ring-white/50 relative z-50"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <LinkedinIcon size={16} className="text-white" />
+                      </motion.a>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
 
- 
+              {/* Corner Accent */}
+              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform rotate-45 translate-x-8 -translate-y-8" />
+            </motion.div>
+          </Tilt>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
+export default ProfileCards;

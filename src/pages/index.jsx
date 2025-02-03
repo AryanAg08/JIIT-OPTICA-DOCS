@@ -48,9 +48,9 @@ export default function Home() {
 
     return (
         <Layout>
-            <div className="relative w-full">
+            <div className="relative w-full ">
                 {/* Background Animation */}
-                <BackgroundAnimation />
+                <BackgroundAnimation height={true} />
 
                 {/* Main Content */}
                 <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10 text-center px-6 py-4">

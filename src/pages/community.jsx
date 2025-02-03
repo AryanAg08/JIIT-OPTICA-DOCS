@@ -9,9 +9,9 @@ export default function Community() {
   return (
     <Layout>
       {/* Ensure content starts just below the navbar */}
-      <div className="relative min-h-screen bg-neutral-900 pt-20">  
+      <div className="relative  bg-neutral-900 pt-20">
         {/* Background Animation */}
-        <BackgroundAnimation className="relative inset-0 z-0" />
+        <BackgroundAnimation className="relative inset-0 z-0" height={false} />
 
         {/* Header Section */}
         <motion.header
